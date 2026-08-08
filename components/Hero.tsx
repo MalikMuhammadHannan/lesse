@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { DitheringShader } from "./dithering-shader";
 
 const container = {
@@ -16,20 +17,39 @@ const item = {
 };
 
 export default function Hero() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"],
+  });
+
+  const panelScale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.6, 1], [1, 1, 0]);
+  const videoParallax = useTransform(scrollYProgress, [0, 1], [0, 60]);
+
   return (
-    <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-black">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/videos/bg.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      />
+    <motion.section
+      ref={ref}
+      style={{ scale: panelScale }}
+      className="relative mx-2 mt-2 flex min-h-[calc(100vh-64px)] origin-center items-center overflow-hidden rounded-3xl bg-white sm:mx-3 sm:mt-3"
+    >
+      <motion.div style={{ y: videoParallax }} className="absolute inset-x-0 -top-8 -bottom-8">
+        <video
+          className="h-full w-full object-cover"
+          src="/videos/bg.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+        />
+      </motion.div>
       <div className="absolute inset-0 bg-black/70" />
 
-      <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-2">
+      <motion.div
+        style={{ opacity: contentOpacity }}
+        className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-2"
+      >
         <motion.div
           initial="hidden"
           animate="visible"
@@ -67,7 +87,7 @@ export default function Hero() {
             style={{ width: "100%", height: "100%" }}
           />
         </motion.div>
-      </div>
+      </motion.div>
 
       <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
         <span className="eyebrow">Scroll</span>
@@ -86,6 +106,6 @@ export default function Hero() {
           </svg>
         </motion.span>
       </div>
-    </section>
+    </motion.section>
   );
 }

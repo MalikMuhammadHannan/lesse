@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${grotesk.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-near-black text-white">
+      <body className="min-h-full flex flex-col bg-white text-white">
         {children}
         <StartProjectButton />
       </body>

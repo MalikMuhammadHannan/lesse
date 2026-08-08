@@ -1,9 +1,7 @@
 "use client";
 
-import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-
-const Hero3DLogo = dynamic(() => import("./Hero3DLogo"), { ssr: false });
+import { DitheringShader } from "./dithering-shader";
 
 const container = {
   hidden: {},
@@ -19,27 +17,57 @@ const item = {
 
 export default function Hero() {
   return (
-    <section className="relative flex h-screen w-full flex-col justify-end overflow-hidden bg-black">
-      <Hero3DLogo />
+    <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-black">
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        src="/videos/bg.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      />
+      <div className="absolute inset-0 bg-black/70" />
 
-      <motion.div
-        initial="hidden"
-        animate="visible"
-        variants={container}
-        className="relative z-10 mx-auto w-full max-w-5xl px-6 pb-28"
-      >
-        <motion.p variants={item} className="eyebrow mb-4">
-          Full-Service Agency
-        </motion.p>
-        <motion.p variants={item} className="max-w-2xl text-4xl leading-[1.1] md:text-5xl">
-          <span className="text-white">
-            Cortexsys is a design and technology studio based in Islamabad.
-          </span>{" "}
-          <span className="text-muted">
-            We deliver holistic brand identity &amp; digital experiences.
-          </span>
-        </motion.p>
-      </motion.div>
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl grid-cols-1 items-center gap-12 px-6 pb-20 pt-32 md:grid-cols-2">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={container}
+          className="order-1 md:order-2"
+        >
+          <motion.p variants={item} className="eyebrow mb-4">
+            Full-Service Agency
+          </motion.p>
+          <motion.p variants={item} className="max-w-xl text-4xl leading-[1.1] md:text-5xl">
+            <span className="text-white">
+              Cortexsys is a design and technology studio based in Islamabad.
+            </span>{" "}
+            <span className="text-muted">
+              We deliver holistic brand identity &amp; digital experiences.
+            </span>
+          </motion.p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative order-2 mx-auto aspect-square w-full max-w-md overflow-hidden md:order-1"
+        >
+          <DitheringShader
+            shape="sphere"
+            type="random"
+            colorFront="#ffffff"
+            colorBack="transparent"
+            pxSize={2}
+            speed={1.2}
+            width={640}
+            height={640}
+            style={{ width: "100%", height: "100%" }}
+          />
+        </motion.div>
+      </div>
 
       <div className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-2">
         <span className="eyebrow">Scroll</span>

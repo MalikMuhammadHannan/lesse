@@ -36,7 +36,7 @@ function ChromeS() {
         bevelSize={0.04}
         bevelSegments={8}
       >
-        S
+        C
         <meshPhysicalMaterial
           color="#e4e4e4"
           metalness={1}

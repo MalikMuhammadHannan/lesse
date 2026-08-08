@@ -1,4 +1,6 @@
 "use client";
+import LOGO from "@/public/images/white-logo.png";
+
 
 import { useState } from "react";
 import Link from "next/link";
@@ -6,6 +8,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { services } from "@/lib/data/services";
 import ServicePreviewCard from "./ServicePreviewCard";
 import { DotMatrixIcon } from "./Icons";
+import Image from "next/image";
 
 const NAV_ITEMS = [
   { label: "Services", href: "/services", megaMenu: true },
@@ -25,9 +28,15 @@ export default function Header() {
       <div className="flex w-full max-w-5xl items-center justify-between">
         <Link
           href="/"
-          className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-lg font-bold text-black"
+          className="flex h-16 w-16 items-center justify-center rounded-xl  text-lg font-bold text-black"
         >
-          S
+          <Image
+            src={LOGO}
+            alt="Logo"
+            width={70}
+            height={70}
+            preload
+          />
         </Link>
 
         <nav

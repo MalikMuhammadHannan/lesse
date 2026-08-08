@@ -7,7 +7,7 @@ export default function AboutHero() {
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2">
         <h1 className="text-4xl leading-tight md:text-5xl">
           <span className="text-black">
-            Lesse is a full-service branding and digital studio helping
+            Cortexsys is a full-service branding and digital studio helping
           </span>{" "}
           <span className="text-black/40">
             businesses build brands that are clear, distinctive, and built for growth.

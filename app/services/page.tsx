@@ -16,7 +16,7 @@ export default function ServicesPage() {
             <p className="eyebrow mb-6 text-black/50">Our Services</p>
             <h1 className="max-w-3xl text-4xl leading-tight md:text-5xl">
               <span className="text-black">
-                Lesse is a design and technology studio.
+                Cortexsys is a design and technology studio.
               </span>{" "}
               <span className="text-black/40">
                 We build digital products, from concept to production.

@@ -33,7 +33,7 @@ export default function Hero() {
         </motion.p>
         <motion.p variants={item} className="max-w-2xl text-4xl leading-[1.1] md:text-5xl">
           <span className="text-white">
-            Lesse is a design and technology studio based in Italy.
+            Cortexsys is a design and technology studio based in Islamabad.
           </span>{" "}
           <span className="text-muted">
             We deliver holistic brand identity &amp; digital experiences.

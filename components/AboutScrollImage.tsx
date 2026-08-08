@@ -24,7 +24,7 @@ export default function AboutScrollImage() {
         >
           <Image
             src="https://picsum.photos/seed/about-studio/1800/1200"
-            alt="Inside the Lesse studio"
+            alt="Inside the Cortexsys studio"
             fill
             className="object-cover"
           />

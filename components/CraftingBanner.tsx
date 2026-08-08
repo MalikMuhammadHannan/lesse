@@ -6,7 +6,7 @@ export default function CraftingBanner() {
           Crafting Thoughtful Brands and Digital Products
         </h2>
         <p className="mt-4 text-sm leading-relaxed text-muted">
-          Lesse is a design and technology studio. We create digital products and identities
+          Cortexsys is a design and technology studio. We create digital products and identities
           defined by strategy, precision, and vision.
         </p>
       </div>

@@ -4,7 +4,7 @@ const SOCIALS = [
   { label: "Instagram", href: "https://instagram.com" },
   { label: "LinkedIn", href: "https://linkedin.com" },
   { label: "Dribbble", href: "https://dribbble.com" },
-  { label: "Mail", href: "mailto:hello@lesse.studio" },
+  { label: "Mail", href: "mailto:hello@Cortexsys.studio" },
 ];
 
 export default function Footer() {
@@ -42,8 +42,8 @@ export default function Footer() {
       </div>
 
       <div className="relative mt-20 select-none overflow-hidden" aria-hidden>
-        <p className="whitespace-nowrap text-center text-[22vw] font-bold leading-none text-white/5">
-          LESSE
+        <p className="whitespace-nowrap text-center text-[20vw] font-bold leading-none text-white/5">
+          Cortexsys
         </p>
       </div>
 

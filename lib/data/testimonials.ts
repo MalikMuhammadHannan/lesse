@@ -7,7 +7,7 @@ export type Testimonial = {
 export const testimonials: Testimonial[] = [
   {
     quote:
-      "Lesse created a true point of view for our brand and helped us confidently articulate the story we were trying to tell. Their design thinking and technical execution moved us into a category of our own.",
+      "Cortexsys created a true point of view for our brand and helped us confidently articulate the story we were trying to tell. Their design thinking and technical execution moved us into a category of our own.",
     name: "Johnny Tran",
     role: "Founder, Vora",
   },
@@ -19,7 +19,7 @@ export const testimonials: Testimonial[] = [
   },
   {
     quote:
-      "From strategy to shipping code, Lesse handled every layer of the project with the same level of care. It's rare to find a partner that moves this fast without cutting corners.",
+      "From strategy to shipping code, Cortexsys handled every layer of the project with the same level of care. It's rare to find a partner that moves this fast without cutting corners.",
     name: "Marisol Reyes",
     role: "Head of Product, Nymph",
   },

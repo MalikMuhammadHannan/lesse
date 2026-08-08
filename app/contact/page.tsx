@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import ContactPageForm from "@/components/ContactPageForm";
 
 const CONTACT_LINKS = [
-  { label: "contact@lessestudio.com", href: "mailto:contact@lessestudio.com" },
+  { label: "contact@Cortexsysstudio.com", href: "mailto:contact@Cortexsysstudio.com" },
   { label: "Instagram", href: "https://instagram.com" },
   { label: "Dribbble", href: "https://dribbble.com" },
   { label: "LinkedIn", href: "https://linkedin.com" },

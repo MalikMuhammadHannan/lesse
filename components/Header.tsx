@@ -22,6 +22,7 @@ export default function Header() {
   const [hoveredNav, setHoveredNav] = useState<string | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
     <header className="fixed inset-x-0 top-6 z-50 flex justify-center px-4">
@@ -44,7 +45,7 @@ export default function Header() {
             setHoveredNav(null);
             setMenuOpen(false);
           }}
-          className="relative rounded-full border border-white/10 bg-black/60 p-2 backdrop-blur-md shadow-lg shadow-black/20"
+          className="relative hidden rounded-full border border-white/10 bg-black/60 p-2 backdrop-blur-md shadow-lg shadow-black/20 md:block"
         >
           <ul className="flex items-center gap-1">
             {NAV_ITEMS.map((item) => (
@@ -102,11 +103,77 @@ export default function Header() {
         <button
           type="button"
           aria-label="Menu"
-          className="flex h-10 w-10 items-center justify-center rounded-xl bg-dark-card"
+          className="hidden h-10 w-10 items-center justify-center rounded-xl bg-dark-card md:flex"
+        >
+          <DotMatrixIcon />
+        </button>
+
+        <button
+          type="button"
+          aria-label="Toggle menu"
+          aria-expanded={mobileOpen}
+          onClick={() => setMobileOpen((open) => !open)}
+          className="flex h-10 w-10 items-center justify-center rounded-xl bg-dark-card md:hidden"
         >
           <DotMatrixIcon />
         </button>
       </div>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm md:hidden"
+            />
+
+            <motion.div
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", stiffness: 320, damping: 34 }}
+              className="fixed inset-y-0 right-0 z-50 flex h-full w-[82vw] max-w-sm flex-col border-l border-white/10 bg-[#111111] p-6 shadow-2xl shadow-black/60 md:hidden"
+            >
+              <div className="mb-10 flex items-center justify-between">
+                <span className="eyebrow">Menu</span>
+                <button
+                  type="button"
+                  aria-label="Close menu"
+                  onClick={() => setMobileOpen(false)}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                    <path
+                      d="M6 6l12 12M18 6L6 18"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              <ul className="flex flex-col gap-1">
+                {NAV_ITEMS.map((item) => (
+                  <li key={item.label}>
+                    <Link
+                      href={item.href}
+                      onClick={() => setMobileOpen(false)}
+                      className="block rounded-xl px-4 py-3 text-lg text-white/80 transition-colors hover:bg-white/10 hover:text-white"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
 }

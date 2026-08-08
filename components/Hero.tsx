@@ -58,7 +58,7 @@ export default function Hero() {
           className="order-1 md:order-2"
         >
           <motion.p variants={item} className="eyebrow mb-4">
-            Full-Service Agency
+            Cortexsys
           </motion.p>
           <motion.p variants={item} className="max-w-xl text-4xl leading-[1.1] md:text-5xl">
             <span className="text-white">

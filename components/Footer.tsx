@@ -42,7 +42,7 @@ export default function Footer() {
       </div>
 
       <div className="relative mt-20 select-none overflow-hidden" aria-hidden>
-        <p className="whitespace-nowrap text-center text-[20vw] font-bold leading-none text-white/5">
+        <p className="whitespace-nowrap text-center text-[20vw] font-bold leading-none text-white  italic">
           Cortexsys
         </p>
       </div>

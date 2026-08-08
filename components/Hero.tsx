@@ -3,6 +3,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import { DitheringShader } from "./dithering-shader";
+import Button from "./ui/Button";
 
 const container = {
   hidden: {},
@@ -61,11 +62,16 @@ export default function Hero() {
           </motion.p>
           <motion.p variants={item} className="max-w-xl text-4xl leading-[1.1] md:text-5xl">
             <span className="text-white">
-              Cortexsys is a design and technology studio based in Islamabad.
+              {/* Cortexsys is a design and technology studio based in Islamabad. */}
+              Build Without Limits. Move Without Waiting.
             </span>{" "}
-            <span className="text-muted">
+            {/* <span className="text-muted">
               We deliver holistic brand identity &amp; digital experiences.
-            </span>
+            </span> */}
+            <Button
+            >
+              Let's Talk
+            </Button>
           </motion.p>
         </motion.div>
 
@@ -73,19 +79,31 @@ export default function Hero() {
           initial={{ opacity: 0, scale: 0.85 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="relative order-2 mx-auto aspect-square w-full max-w-md overflow-hidden md:order-1"
+          className="relative order-2 mx-auto aspect-square w-full max-w-md md:order-1"
         >
-          <DitheringShader
-            shape="sphere"
-            type="random"
-            colorFront="#ffffff"
-            colorBack="transparent"
-            pxSize={2}
-            speed={1.2}
-            width={640}
-            height={640}
-            style={{ width: "100%", height: "100%" }}
+          <motion.div
+            className="absolute inset-0 -z-10 rounded-full bg-white/25 blur-3xl"
+            animate={{ scale: [1, 1.18, 1], opacity: [0.25, 0.5, 0.25] }}
+            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
           />
+
+          <motion.div
+            animate={{ scale: [1, 1.04, 1] }}
+            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+            className="relative h-full w-full"
+          >
+            <DitheringShader
+              shape="sphere"
+              type="random"
+              colorFront="#C4C4C4"
+              colorBack="transparent"
+              pxSize={2}
+              speed={1.2}
+              width={640}
+              height={640}
+              style={{ width: "100%", height: "100%" }}
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
 

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { motion } from "framer-motion";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 type ButtonProps = {
@@ -41,7 +41,7 @@ export default function Button({
   className = "",
 }: ButtonProps) {
   const base =
-    "group inline-flex items-center gap-3 rounded-full pl-6 pr-2 py-2 text-sm font-medium transition-all duration-200";
+    "group cursor-pointer inline-flex items-center gap-3 rounded-full pl-6 pr-2 py-2 text-sm font-medium transition-all duration-200";
   const variants: Record<string, string> = {
     light: "bg-pill text-black hover:scale-[1.03]",
     outline:

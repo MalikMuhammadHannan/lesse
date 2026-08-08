@@ -28,7 +28,7 @@ export default function Header() {
       <div className="flex w-full max-w-5xl items-center justify-between">
         <Link
           href="/"
-          className="flex h-16 w-16 items-center justify-center rounded-xl  text-lg font-bold text-black"
+          className="flex h-10 w-10 items-center justify-center rounded-xl  text-lg font-bold bg-dark-card"
         >
           <Image
             src={LOGO}

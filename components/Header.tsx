@@ -8,9 +8,9 @@ import ServicePreviewCard from "./ServicePreviewCard";
 import { DotMatrixIcon } from "./Icons";
 
 const NAV_ITEMS = [
-  { label: "Services", href: "#services", megaMenu: true },
-  { label: "Portfolio", href: "#work" },
-  { label: "About", href: "#about" },
+  { label: "Services", href: "/services", megaMenu: true },
+  { label: "Portfolio", href: "/portfolio" },
+  { label: "About", href: "/about" },
   { label: "Insights", href: "#news" },
   { label: "Contact", href: "#contact" },
 ];

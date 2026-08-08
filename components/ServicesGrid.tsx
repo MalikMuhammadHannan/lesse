@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { services } from "@/lib/data/services";
 import ServicePreviewCard from "./ServicePreviewCard";
+import Button from "./ui/Button";
 
 export default function ServicesGrid() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
@@ -29,9 +30,12 @@ export default function ServicesGrid() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/services"
-            className="rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-[1.03]"
+          // className="rounded-full bg-black px-6 py-3 text-sm font-medium text-white transition-transform hover:scale-[1.03]"
           >
-            Expand All Services
+            <Button variant="light">
+
+              Expand All Services
+            </Button>
           </Link>
         </div>
       </div>

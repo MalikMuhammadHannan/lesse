@@ -1,3 +1,5 @@
+export type ServiceGroup = "Strategy" | "Visual" | "Technology";
+
 export type Service = {
   slug: string;
   name: string;
@@ -8,7 +10,26 @@ export type Service = {
   tagline: string;
   heading: { light: string; muted: string };
   description: string;
+  group: ServiceGroup;
 };
+
+export const serviceGroups: { name: ServiceGroup; description: string }[] = [
+  {
+    name: "Strategy",
+    description:
+      "Strategy defines the foundation of a brand. Through research, analysis, and strategic thinking, we clarify positioning, messaging, and long-term direction.",
+  },
+  {
+    name: "Visual",
+    description:
+      "We create brand identities, digital interfaces, and visual content that communicate clearly, work consistently across every format, and reflect who the brand truly is.",
+  },
+  {
+    name: "Technology",
+    description:
+      "Technology brings design to life. We build websites, e-commerce platforms, and web applications with precision and care: clean, fast, and built to perform for the people who use them.",
+  },
+];
 
 export const services: Service[] = [
   {
@@ -33,6 +54,7 @@ export const services: Service[] = [
     },
     description:
       "Brand strategy is the invisible architecture behind every successful brand. It defines why your company exists beyond making money, who your audience really is, how you're different from every competitor in your space, and what you stand for consistently — across every touchpoint, every year.",
+    group: "Strategy",
   },
   {
     slug: "web-development",
@@ -57,6 +79,7 @@ export const services: Service[] = [
     },
     description:
       "Great design means nothing without the engineering to back it. We build performant, maintainable websites using modern frameworks — architected for speed, SEO, and long-term scalability, so every release ships faster than the last.",
+    group: "Technology",
   },
   {
     slug: "brand-identity",
@@ -78,6 +101,7 @@ export const services: Service[] = [
     },
     description:
       "Your identity is the first impression and the lasting one. We design logos, color systems, typography, and packaging that translate your positioning into a visual language customers recognize anywhere — on shelf, on screen, or in hand.",
+    group: "Visual",
   },
   {
     slug: "ecommerce",
@@ -101,6 +125,7 @@ export const services: Service[] = [
     },
     description:
       "Every friction point in a checkout is a lost sale. We design and build eCommerce experiences — from Shopify builds to custom platforms — optimized end-to-end for conversion, retention, and scale.",
+    group: "Technology",
   },
   {
     slug: "user-experience-design",
@@ -123,6 +148,7 @@ export const services: Service[] = [
     },
     description:
       "Good UX disappears — it just works. We research how people actually behave, then design flows, interfaces, and systems that remove friction at every step, so your product feels obvious the first time someone opens it.",
+    group: "Visual",
   },
   {
     slug: "web-mobile-applications",
@@ -145,6 +171,7 @@ export const services: Service[] = [
     },
     description:
       "From native iOS and Android to cross-platform builds, we engineer applications that hold up under real usage — fast, stable, and built on architecture that scales as your user base grows.",
+    group: "Technology",
   },
   {
     slug: "visual-content",
@@ -160,6 +187,7 @@ export const services: Service[] = [
     },
     description:
       "Photography, motion, and 3D renders that do the talking your copy doesn't have to. We produce visual content built specifically for how and where your audience actually sees it.",
+    group: "Visual",
   },
   {
     slug: "embedded-hardware",
@@ -181,6 +209,7 @@ export const services: Service[] = [
     },
     description:
       "From firmware to enclosure, we design and engineer connected hardware end-to-end — prototyping, testing, and manufacturing-ready documentation for products that need to work in the real world, not just on a screen.",
+    group: "Technology",
   },
 ];
 

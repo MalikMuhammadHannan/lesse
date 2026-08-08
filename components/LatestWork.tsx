@@ -4,15 +4,20 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { portfolioProjects } from "@/lib/data/portfolio";
+import Button from "./ui/Button";
+
+const FEATURED_COUNT = 4;
 
 export default function LatestWork() {
+  const featured = portfolioProjects.slice(0, FEATURED_COUNT);
+
   return (
     <section id="work" className="bg-black px-6 py-32">
       <div className="mx-auto max-w-5xl">
         <p className="eyebrow mb-16">Latest Work</p>
 
         <div className="flex flex-col gap-48">
-          {portfolioProjects.map((project, i) => (
+          {featured.map((project, i) => (
             <motion.div
               key={project.slug}
               initial={{ opacity: 0, y: 60 }}
@@ -50,6 +55,12 @@ export default function LatestWork() {
               </Link>
             </motion.div>
           ))}
+        </div>
+
+        <div className="mt-20 flex justify-center">
+          <Button href="/portfolio" variant="outline">
+            View All Work
+          </Button>
         </div>
       </div>
     </section>

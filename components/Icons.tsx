@@ -86,3 +86,38 @@ export function DotMatrixIcon({ className = "" }: { className?: string }) {
     </div>
   );
 }
+
+const CLUSTER_PATTERNS = [
+  [0, 0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0],
+  [0, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 0],
+  [1, 1, 0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 0, 1],
+  [0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0],
+  [1, 0, 1, 1, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0],
+  [0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 0],
+];
+
+export function DotDiamondIcon({ className = "" }: { className?: string }) {
+  return (
+    <svg width="14" height="14" viewBox="0 0 24 24" className={className} fill="currentColor">
+      <circle cx="12" cy="4" r="2" />
+      <circle cx="4" cy="12" r="2" />
+      <circle cx="20" cy="12" r="2" />
+      <circle cx="12" cy="20" r="2" />
+    </svg>
+  );
+}
+
+export function ProcessDotCluster({ index, className = "" }: { index: number; className?: string }) {
+  const pattern = CLUSTER_PATTERNS[index % CLUSTER_PATTERNS.length];
+  return (
+    <div className={`grid grid-cols-4 gap-1.5 ${className}`}>
+      {pattern.map((dot, i) => (
+        <span
+          key={i}
+          className="h-1.5 w-1.5 rounded-full bg-black"
+          style={{ opacity: dot ? 0.15 : 0 }}
+        />
+      ))}
+    </div>
+  );
+}

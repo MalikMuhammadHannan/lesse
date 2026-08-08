@@ -68,20 +68,22 @@ export default function Header() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: -8, scale: 0.98 }}
                 transition={{ duration: 0.2 }}
-                className="absolute left-1/2 top-full mt-4 w-[820px] max-w-[92vw] -translate-x-1/2 rounded-3xl border border-white/10 bg-[#111111] p-4 shadow-2xl shadow-black/60"
+                className="absolute left-1/2 top-full w-205 max-w-[92vw] -translate-x-1/2 pt-4"
               >
-                <div className="grid grid-cols-2 gap-3">
-                  {services.map((service) => (
-                    <ServicePreviewCard
-                      key={service.slug}
-                      service={service}
-                      variant="menu"
-                      isHovered={hoveredCard === service.slug}
-                      isDimmed={hoveredCard !== null && hoveredCard !== service.slug}
-                      onHoverStart={() => setHoveredCard(service.slug)}
-                      onHoverEnd={() => setHoveredCard(null)}
-                    />
-                  ))}
+                <div className="rounded-3xl border border-white/10 bg-[#111111] p-4 shadow-2xl shadow-black/60">
+                  <div className="grid grid-cols-2 gap-3">
+                    {services.map((service) => (
+                      <ServicePreviewCard
+                        key={service.slug}
+                        service={service}
+                        variant="menu"
+                        isHovered={hoveredCard === service.slug}
+                        isDimmed={hoveredCard !== null && hoveredCard !== service.slug}
+                        onHoverStart={() => setHoveredCard(service.slug)}
+                        onHoverEnd={() => setHoveredCard(null)}
+                      />
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             )}

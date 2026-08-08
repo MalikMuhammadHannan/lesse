@@ -31,7 +31,7 @@ export default function ServicePreviewCard({
       onMouseEnter={onHoverStart}
       onMouseLeave={onHoverEnd}
       className={`relative overflow-hidden rounded-2xl border border-white/8 bg-dark-card transition-opacity duration-300 ${
-        isMenu ? "h-32 p-4" : "aspect-3/4 p-5"
+        isMenu ? "h-32" : "aspect-3/4"
       } ${isDimmed ? "opacity-50" : "opacity-100"}`}
     >
       {isMenu ? (
@@ -67,7 +67,11 @@ export default function ServicePreviewCard({
         </div>
       )}
 
-      <div className="relative z-10 flex h-full flex-col justify-between">
+      <div
+        className={`absolute z-10 flex flex-col justify-between ${
+          isMenu ? "inset-4" : "inset-5"
+        }`}
+      >
         <div className="flex items-start justify-between gap-2">
           <span className="flex items-center gap-2">
             <ServiceIcon icon={service.icon} className="text-white/70" />

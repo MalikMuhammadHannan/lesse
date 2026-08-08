@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { portfolioProjects } from "@/lib/data/portfolio";
+import { IMAGES } from "@/lib/default-image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-import { portfolioProjects } from "@/lib/data/portfolio";
+import { useEffect, useRef } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -76,7 +77,7 @@ export default function ClientLogosToPortfolio() {
           ref={imageRef}
           className="relative h-[340px] w-[600px] max-w-full overflow-hidden rounded-2xl shadow-2xl shadow-black/10"
         >
-          <Image src={project.image} alt={project.title} fill className="object-cover" />
+          <Image src={IMAGES.services.web_gif} alt={project.title} fill className="object-cover" />
         </div>
       </div>
     </section>

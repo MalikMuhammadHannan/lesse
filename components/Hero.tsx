@@ -69,6 +69,7 @@ export default function Hero() {
               We deliver holistic brand identity &amp; digital experiences.
             </span> */}
             <Button
+              href="/contact"
             >
               Let's Talk
             </Button>

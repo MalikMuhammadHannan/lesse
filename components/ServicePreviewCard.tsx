@@ -30,9 +30,8 @@ export default function ServicePreviewCard({
       href={`/services/${service.slug}`}
       onMouseEnter={onHoverStart}
       onMouseLeave={onHoverEnd}
-      className={`relative overflow-hidden rounded-2xl border border-white/8 bg-dark-card transition-opacity duration-300 ${
-        isMenu ? "h-32" : "aspect-3/4"
-      } ${isDimmed ? "opacity-50" : "opacity-100"}`}
+      className={`relative overflow-hidden rounded-2xl border border-white/8 bg-dark-card transition-opacity duration-300 ${isMenu ? "h-32" : "aspect-3/4"
+        } ${isDimmed ? "opacity-50" : "opacity-100"}`}
     >
       {isMenu ? (
         <AnimatePresence>
@@ -44,7 +43,7 @@ export default function ServicePreviewCard({
               transition={{ duration: 0.3 }}
               className="absolute inset-0"
             >
-              <Image src={service.image} alt="" fill className="object-cover blur-[2px]" />
+              <Image src={service.image} alt="" fill className="object-cover " />
               <div className="absolute inset-0 bg-black/50" />
             </motion.div>
           )}
@@ -55,30 +54,26 @@ export default function ServicePreviewCard({
             src={service.image}
             alt=""
             fill
-            className={`object-cover transition-all duration-300 ${
-              isHovered ? "scale-105 blur-[2px] brightness-[0.5]" : ""
-            }`}
+            className={`object-cover transition-all duration-300 ${isHovered ? "scale-105 blur-[2px] brightness-[0.5]" : ""
+              }`}
           />
           <div
-            className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${
-              isHovered ? "opacity-60" : "opacity-30"
-            }`}
+            className={`absolute inset-0 bg-black/20 transition-opacity duration-300 ${isHovered ? "opacity-60" : "opacity-30"
+              }`}
           />
         </div>
       )}
 
       <div
-        className={`absolute z-10 flex flex-col justify-between ${
-          isMenu ? "inset-4" : "inset-5"
-        }`}
+        className={`absolute z-10 flex flex-col justify-between ${isMenu ? "inset-4" : "inset-5"
+          }`}
       >
         <div className="flex items-start justify-between gap-2">
           <span className="flex items-center gap-2">
             <ServiceIcon icon={service.icon} className="text-white/70" />
             <span
-              className={`font-medium text-white ${
-                isMenu ? "text-base" : "text-xl leading-tight"
-              }`}
+              className={`font-medium text-white ${isMenu ? "text-base" : "text-xl leading-tight"
+                }`}
             >
               {service.name}
             </span>

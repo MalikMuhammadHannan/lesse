@@ -1,3 +1,5 @@
+import { IMAGES } from "../default-image";
+
 export type ServiceGroup = "Strategy" | "Visual" | "Technology";
 
 export type Service = {
@@ -37,7 +39,7 @@ export const services: Service[] = [
     name: "Brand Strategy",
     count: 6,
     icon: "plus",
-    image: "https://picsum.photos/seed/brand-strategy/900/1200",
+    image: IMAGES.services.brandStrategy,
     tags: [
       "Brand Positioning",
       "Competitor & Market Research",
@@ -61,7 +63,7 @@ export const services: Service[] = [
     name: "Web Development",
     count: 7,
     icon: "monitor",
-    image: "https://picsum.photos/seed/web-development/900/1200",
+    image: IMAGES.services.webMobile,
     tags: [
       "Custom Websites",
       "Headless CMS Builds",
@@ -86,7 +88,7 @@ export const services: Service[] = [
     name: "Brand Identity",
     count: 5,
     icon: "frame",
-    image: "https://picsum.photos/seed/brand-identity/900/1200",
+    image: IMAGES.services.brandIdentity,
     tags: [
       "Logo Design",
       "Visual Identity Systems",
@@ -108,7 +110,7 @@ export const services: Service[] = [
     name: "eCommerce",
     count: 7,
     icon: "cart",
-    image: "https://picsum.photos/seed/ecommerce/900/1200",
+    image: IMAGES.services.ecommerce,
     tags: [
       "Shopify Stores",
       "Custom eCommerce",
@@ -132,7 +134,7 @@ export const services: Service[] = [
     name: "User Experience Design",
     count: 6,
     icon: "monitor",
-    image: "https://picsum.photos/seed/ux-design/900/1200",
+    image: IMAGES.services.ux,
     tags: [
       "User Research",
       "Wireframing & Prototyping",
@@ -155,7 +157,7 @@ export const services: Service[] = [
     name: "Web & Mobile Applications",
     count: 6,
     icon: "code",
-    image: "https://picsum.photos/seed/web-mobile/900/1200",
+    image: IMAGES.services.mobile,
     tags: [
       "Native iOS & Android Apps",
       "Cross-Platform Apps",
@@ -178,7 +180,7 @@ export const services: Service[] = [
     name: "Visual Content",
     count: 3,
     icon: "image",
-    image: "https://picsum.photos/seed/visual-content/900/1200",
+    image: IMAGES.services.visual,
     tags: ["Product Photography", "Motion & Video", "3D Renders"],
     tagline: "Create imagery and motion that stop the scroll.",
     heading: {
@@ -194,7 +196,7 @@ export const services: Service[] = [
     name: "Embedded & Hardware",
     count: 5,
     icon: "grid",
-    image: "https://picsum.photos/seed/embedded-hardware/900/1200",
+    image: IMAGES.services.embedding,
     tags: [
       "Firmware Development",
       "PCB Design",

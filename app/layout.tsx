@@ -63,6 +63,9 @@ const organizationJsonLd = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${grotesk.variable} h-full antialiased`}>
+      <head>
+        <meta name="google-site-verification" content="TQP0S66elXqZF59LwmRMj_-TeUuoX62Iu-qzsSxiyaA" />
+      </head>
       <body className="min-h-full flex flex-col bg-white text-white">
         {children}
         <StartProjectButton />

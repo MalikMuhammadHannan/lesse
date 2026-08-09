@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Header from "@/components/Header";
@@ -6,6 +7,36 @@ import { news } from "@/lib/data/news";
 
 export function generateStaticParams() {
   return news.map((article) => ({ slug: article.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const article = news.find((n) => n.slug === slug);
+  if (!article) return {};
+
+  return {
+    title: article.title,
+    description: `${article.title} — insights from Cortexsys.`,
+    alternates: {
+      canonical: `/insights/${article.slug}`,
+    },
+    openGraph: {
+      title: article.title,
+      description: `${article.title} — insights from Cortexsys.`,
+      url: `/insights/${article.slug}`,
+      images: [{ url: article.image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: article.title,
+      description: `${article.title} — insights from Cortexsys.`,
+      images: [article.image],
+    },
+  };
 }
 
 export default async function InsightDetailPage({

@@ -1,9 +1,25 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import CraftingBanner from "@/components/CraftingBanner";
 import PortfolioCard from "@/components/PortfolioCard";
 import { portfolioProjects } from "@/lib/data/portfolio";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  description:
+    "A curated collection of Cortexsys projects across brand strategy, visual identity, web design, development, and visual content.",
+  alternates: {
+    canonical: "/portfolio",
+  },
+  openGraph: {
+    title: "Portfolio - Cortexsys",
+    description:
+      "A curated collection of Cortexsys projects across brand strategy, visual identity, web design, development, and visual content.",
+    url: "/portfolio",
+  },
+};
 
 export default function PortfolioPage() {
   return (

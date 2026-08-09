@@ -3,19 +3,13 @@ import { Inter_Tight } from "next/font/google";
 import "./globals.css";
 import StartProjectButton from "@/components/ui/StartProjectButton";
 import LOGO from "@/public/images/white-logo.png";
-
+import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, TITLE } from "@/lib/seo";
 
 const grotesk = Inter_Tight({
   variable: "--font-grotesk",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
-
-const SITE_NAME = "Cortexsys";
-const SITE_DESCRIPTION =
-  "Cortexsys is a design and technology studio based in Islamabad. We deliver holistic brand identity & digital experiences.";
-const SITE_URL = "https://cortexsys.studio";
-const TITLE = `${SITE_NAME} — Design & Technology Studio`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -34,10 +28,8 @@ export const metadata: Metadata = {
     "eCommerce development",
   ],
   authors: [{ name: SITE_NAME }],
-  icons: {
-    icon: LOGO.src,
-    shortcut: LOGO.src,
-    apple: LOGO.src,
+  alternates: {
+    canonical: "/",
   },
   openGraph: {
     type: "website",
@@ -59,12 +51,25 @@ export const metadata: Metadata = {
   },
 };
 
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  logo: `${SITE_URL}${LOGO.src}`,
+  description: SITE_DESCRIPTION,
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${grotesk.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col bg-white text-white">
         {children}
         <StartProjectButton />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
       </body>
     </html>
   );

@@ -60,7 +60,10 @@ export default function Hero() {
           <motion.p variants={item} className="eyebrow mb-4">
             Cortexsys
           </motion.p>
-          <motion.p variants={item} className="max-w-xl text-4xl leading-[1.1] md:text-5xl">
+          <motion.h1
+            variants={item}
+            className="max-w-xl text-4xl leading-[1.1] md:text-5xl"
+          >
             <span className="text-white">
               {/* Cortexsys is a design and technology studio based in Islamabad. */}
               Build Without Limits. Move Without Waiting.
@@ -68,12 +71,10 @@ export default function Hero() {
             {/* <span className="text-muted">
               We deliver holistic brand identity &amp; digital experiences.
             </span> */}
-            <Button
-              href="/contact"
-            >
-              Let's Talk
-            </Button>
-          </motion.p>
+          </motion.h1>
+          <motion.div variants={item} className="mt-6">
+            <Button href="/contact">Let's Talk</Button>
+          </motion.div>
         </motion.div>
 
         <motion.div

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Header from "@/components/Header";
@@ -6,6 +7,39 @@ import { portfolioProjects } from "@/lib/data/portfolio";
 
 export function generateStaticParams() {
   return portfolioProjects.map((project) => ({ slug: project.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const project = portfolioProjects.find((p) => p.slug === slug);
+  if (!project) return {};
+
+  const title = project.title;
+  const description = `${project.title} — a ${project.industry} project delivered by Cortexsys in ${project.location}.`;
+
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: `/portfolio/${project.slug}`,
+    },
+    openGraph: {
+      title,
+      description,
+      url: `/portfolio/${project.slug}`,
+      images: [{ url: project.image }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [project.image],
+    },
+  };
 }
 
 export default async function PortfolioDetailPage({

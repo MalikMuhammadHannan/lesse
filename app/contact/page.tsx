@@ -1,6 +1,22 @@
+import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactPageForm from "@/components/ContactPageForm";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description:
+    "Get in touch with Cortexsys to discuss brand strategy, design, and technology projects.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact Cortexsys",
+    description:
+      "Get in touch with Cortexsys to discuss brand strategy, design, and technology projects.",
+    url: "/contact",
+  },
+};
 
 const CONTACT_LINKS = [
   { label: "contact@Cortexsysstudio.com", href: "mailto:contact@Cortexsysstudio.com" },

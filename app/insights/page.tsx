@@ -1,8 +1,24 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { news } from "@/lib/data/news";
+
+export const metadata: Metadata = {
+  title: "Insights",
+  description:
+    "Ideas and perspectives from Cortexsys on branding, design, and technology.",
+  alternates: {
+    canonical: "/insights",
+  },
+  openGraph: {
+    title: "Insights - Cortexsys",
+    description:
+      "Ideas and perspectives from Cortexsys on branding, design, and technology.",
+    url: "/insights",
+  },
+};
 
 export default function InsightsPage() {
   return (

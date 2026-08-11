@@ -37,7 +37,7 @@ export default function Hero() {
       <motion.div style={{ y: videoParallax }} className="absolute inset-x-0 -top-8 -bottom-8">
         <video
           className="h-full w-full object-cover"
-          src="/videos/bg-1.mp4"
+          src="https://res.cloudinary.com/npnyplwu/video/upload/q_auto,f_auto/v1786468197/bg-1.mp4"
           autoPlay
           muted
           loop

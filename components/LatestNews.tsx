@@ -57,7 +57,7 @@ export default function LatestNews() {
 
       <div
         ref={trackRef}
-        className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-6 pb-4"
+        className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pb-4"
       >
         {news.map((article) => (
           <Link

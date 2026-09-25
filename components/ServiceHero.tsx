@@ -14,7 +14,7 @@ export default function ServiceHero({ service }: { service: Service }) {
       />
       <div className="absolute inset-0 bg-black/55" />
 
-      <div className="relative z-10 flex w-full items-end justify-between gap-10 px-6 pb-16">
+      <div className="relative z-10 mx-auto flex w-full max-w-6xl items-end justify-between gap-10 px-6 pb-16">
         <div className="flex flex-col gap-6">
           <h1 className="max-w-xl text-5xl leading-[1.05] text-white md:text-6xl">
             {service.name}

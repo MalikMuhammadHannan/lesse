@@ -13,7 +13,7 @@ export default function LatestWork() {
 
   return (
     <section id="work" className="bg-black px-6 py-32">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <p className="eyebrow mb-16">Latest Work</p>
 
         <div className="flex flex-col gap-48">

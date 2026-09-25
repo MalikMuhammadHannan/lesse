@@ -66,7 +66,7 @@ export default function ClientLogosToPortfolio() {
       <div className="flex h-full flex-col items-center justify-center gap-14 px-6">
         <div
           ref={logosRef}
-          className="flex w-full max-w-5xl flex-wrap items-center justify-between gap-8"
+          className="flex w-full max-w-6xl flex-wrap items-center justify-between gap-8"
         >
           {LOGO_PATTERNS.map((pattern, i) => (
             <DotLogo key={i} pattern={pattern} />

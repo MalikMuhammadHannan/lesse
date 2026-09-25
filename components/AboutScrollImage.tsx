@@ -20,7 +20,7 @@ export default function AboutScrollImage() {
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6">
         <motion.div
           style={{ scale, borderRadius: radius, opacity }}
-          className="relative h-[70vh] w-full max-w-5xl overflow-hidden"
+          className="relative h-[70vh] w-full max-w-6xl overflow-hidden"
         >
           <Image
             src="https://picsum.photos/seed/about-studio/1800/1200"

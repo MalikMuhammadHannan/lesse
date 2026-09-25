@@ -55,7 +55,7 @@ export default async function PortfolioDetailPage({
     <>
       <Header />
       <main className="pt-40">
-        <section className="mx-auto max-w-5xl px-6 pb-24">
+        <section className="mx-auto max-w-6xl px-6 pb-24">
           <p className="eyebrow mb-6">Latest Work</p>
           <h1 className="mb-10 text-5xl leading-tight">{project.title}</h1>
 

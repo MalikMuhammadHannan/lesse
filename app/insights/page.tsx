@@ -25,7 +25,7 @@ export default function InsightsPage() {
     <>
       <Header />
       <main className="pt-40">
-        <section className="mx-auto max-w-5xl px-6 pb-24">
+        <section className="mx-auto max-w-6xl px-6 pb-24">
           <p className="eyebrow mb-10">Latest News</p>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             {news.map((article) => (

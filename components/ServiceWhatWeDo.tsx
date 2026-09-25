@@ -10,7 +10,7 @@ export default function ServiceWhatWeDo({ service }: { service: Service }) {
 
   return (
     <section className="bg-off-white px-6 py-32 text-black">
-      <div className="mx-auto max-w-5xl">
+      <div className="mx-auto max-w-6xl">
         <p className="eyebrow mb-10 text-black/50">What We Do</p>
 
         <div onMouseLeave={() => setHovered(null)} className="flex flex-col">

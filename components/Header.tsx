@@ -25,8 +25,8 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-6 z-50 flex justify-center px-4">
-      <div className="flex w-full max-w-5xl items-center justify-between">
+    <header className="fixed inset-x-0 top-6 z-50 flex justify-center px-6">
+      <div className="flex w-full max-w-6xl items-center justify-between">
         <Link
           href="/"
           className="flex h-10 w-10 items-center justify-center rounded-xl  text-lg font-bold bg-dark-card"

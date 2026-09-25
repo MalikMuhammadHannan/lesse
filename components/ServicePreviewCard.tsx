@@ -30,9 +30,9 @@ export default function ServicePreviewCard({
       href={`/services/${service.slug}`}
       onMouseEnter={onHoverStart}
       onMouseLeave={onHoverEnd}
-      className={`relative overflow-hidden rounded-2xl border border-white/8 bg-dark-card ${isMenu
-        ? `min-h-0 basis-0 transition-[flex-grow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isHovered ? "grow-[1.8]" : "grow"}`
-        : `aspect-3/4 transition-opacity duration-300 ${isDimmed ? "opacity-50" : "opacity-100"}`
+      className={`relative overflow-hidden rounded-2xl border ${isMenu
+        ? `min-h-0 basis-0 border-white/5 bg-neutral-700/65 transition-[flex-grow] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] ${isHovered ? "grow-[1.8]" : "grow"}`
+        : `aspect-3/4 border-white/8 bg-dark-card transition-opacity duration-300 ${isDimmed ? "opacity-50" : "opacity-100"}`
         }`}
     >
       {isMenu ? (
@@ -80,7 +80,7 @@ export default function ServicePreviewCard({
               {service.name}
             </span>
           </span>
-          <span className="whitespace-nowrap text-xs text-muted">
+          <span className={`whitespace-nowrap text-xs ${isMenu ? "text-white/50" : "text-muted"}`}>
             /{service.count} services
           </span>
         </div>

@@ -28,7 +28,7 @@ export default function StartProjectButton() {
           transition={{ duration: 0.3 }}
           className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40"
         >
-          <Button href="#contact" variant="light" className="shadow-xl shadow-black/40">
+          <Button href="/contact" variant="light" className="shadow-xl shadow-black/40">
             Start a Project
           </Button>
         </motion.div>

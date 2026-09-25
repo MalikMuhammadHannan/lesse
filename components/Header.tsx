@@ -14,8 +14,8 @@ const NAV_ITEMS = [
   { label: "Services", href: "/services", megaMenu: true },
   { label: "Portfolio", href: "/portfolio" },
   { label: "About", href: "/about" },
-  { label: "Insights", href: "#news" },
-  { label: "Contact", href: "/contact" },
+  // { label: "Insights", href: "#news" },
+  { label: "Get A Proposal", href: "/contact" },
 ];
 
 export default function Header() {

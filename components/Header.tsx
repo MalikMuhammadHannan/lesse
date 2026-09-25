@@ -82,16 +82,22 @@ export default function Header() {
               >
                 <div className="rounded-3xl border border-white/10 bg-[#111111] p-4 shadow-2xl shadow-black/60">
                   <div className="grid grid-cols-2 gap-3">
-                    {services.map((service) => (
-                      <ServicePreviewCard
-                        key={service.slug}
-                        service={service}
-                        variant="menu"
-                        isHovered={hoveredCard === service.slug}
-                        isDimmed={hoveredCard !== null && hoveredCard !== service.slug}
-                        onHoverStart={() => setHoveredCard(service.slug)}
-                        onHoverEnd={() => setHoveredCard(null)}
-                      />
+                    {[0, 1].map((column) => (
+                      <div key={column} className="flex h-120 flex-col gap-3">
+                        {services
+                          .filter((_, index) => index % 2 === column)
+                          .map((service) => (
+                            <ServicePreviewCard
+                              key={service.slug}
+                              service={service}
+                              variant="menu"
+                              isHovered={hoveredCard === service.slug}
+                              isDimmed={false}
+                              onHoverStart={() => setHoveredCard(service.slug)}
+                              onHoverEnd={() => setHoveredCard(null)}
+                            />
+                          ))}
+                      </div>
                     ))}
                   </div>
                 </div>

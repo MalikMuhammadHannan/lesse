@@ -23,7 +23,7 @@ export default function ServiceInPractice({ service }: { service: Service }) {
             </h2>
             <p className="max-w-sm text-sm text-black/50">
               Benchmark {service.name.toLowerCase()} work from leading independent
-              studios. Each project is credited to the agency that delivered it.
+              studios. Credits are listed in each case study.
             </p>
           </div>
           <ServiceWorkGrid works={works} />

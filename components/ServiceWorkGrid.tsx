@@ -35,9 +35,8 @@ function WorkCard({
       className={`group block text-left ${featured ? "md:col-span-2" : ""}`}
     >
       <div
-        className={`relative w-full overflow-hidden rounded-2xl bg-black/5 ${
-          featured ? "aspect-4/3 md:aspect-21/9" : "aspect-4/3"
-        }`}
+        className={`relative w-full overflow-hidden rounded-2xl bg-black/5 ${featured ? "aspect-4/3 md:aspect-21/9" : "aspect-4/3"
+          }`}
       >
         <Image
           src={work.images[0]}
@@ -62,10 +61,11 @@ function WorkCard({
           <p className="text-sm font-semibold uppercase text-black">{work.industry}</p>
         </div>
       </div>
-      <p className="mt-3 text-xs text-black/40">
-        {work.tags?.length ? `${work.tags.filter((t) => t !== "Migrations").at(-1)} · ` : ""}
-        Project by {work.agency}
-      </p>
+      {work.tags?.length ? (
+        <p className="mt-3 text-xs text-black/40">
+          {work.tags.filter((t) => t !== "Migrations").at(-1)}
+        </p>
+      ) : null}
     </button>
   );
 }
@@ -188,27 +188,17 @@ export function WorkModal({
             {rest.map((src, i) => (
               <div
                 key={src}
-                className={`relative overflow-hidden rounded-2xl bg-black/5 ${
-                  i === 0 || (i === rest.length - 1 && rest.length % 2 === 0)
+                className={`relative overflow-hidden rounded-2xl bg-black/5 ${i === 0 || (i === rest.length - 1 && rest.length % 2 === 0)
                     ? "aspect-16/9 sm:col-span-2"
                     : "aspect-4/3"
-                }`}
+                  }`}
               >
                 <Image src={src} alt={`${work.client} project image ${i + 2}`} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
               </div>
             ))}
           </div>
 
-          <p className="mt-10 border-t border-black/10 pt-6 text-xs text-black/50">
-            Project by{" "}
-            <a href={agencySites[work.agency]} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-black">
-              {work.agency}
-            </a>{" "}
-            for {work.client}. Imagery © {work.agency} / {work.client}.{" "}
-            <a href={work.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-black">
-              Original case study
-            </a>
-          </p>
+
 
           <div className="mt-8 flex items-center justify-between">
             <button type="button" onClick={onPrev} className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-black/60 hover:text-black">
@@ -271,11 +261,10 @@ export default function ServiceWorkGrid({ works }: { works: ServiceWork[] }) {
                     setFilter(value);
                     e.currentTarget.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
                   }}
-                  className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-5 py-2.5 text-xs font-semibold uppercase tracking-wide transition-colors ${
-                    selected
+                  className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-5 py-2.5 text-xs font-semibold uppercase tracking-wide transition-colors ${selected
                       ? "border-black bg-black text-white"
                       : "border-black/15 text-black/70 hover:border-black/40 hover:text-black"
-                  }`}
+                    }`}
                 >
                   {label}
                   <span className={selected ? "text-white/50" : "text-black/35"}>{count}</span>

@@ -12,7 +12,7 @@ export default function Testimonials() {
             <span className="text-muted">about working with us.</span>
           </h2>
           <div className="mt-10">
-            <Button href="#contact" variant="outline">
+            <Button href="/contact" variant="outline">
               Let&apos;s work together
             </Button>
           </div>

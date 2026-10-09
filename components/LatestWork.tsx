@@ -106,7 +106,6 @@ function WorkTile({ tile, index, onOpen }: { tile: Tile; index: number; onOpen: 
             {work.title}
           </p>
         )}
-        <p className="mt-2 text-[11px] text-white/45">Project by {work.agency}</p>
       </div>
     </motion.button>
   );
@@ -151,8 +150,8 @@ export default function LatestWork() {
             </h2>
           </div>
           <p className="max-w-sm text-sm text-white/50">
-            Benchmark work from leading independent studios. Each project is credited to the agency
-            that delivered it.
+            Benchmark work from leading independent studios. Credits are listed in each
+            case study.
           </p>
         </div>
 

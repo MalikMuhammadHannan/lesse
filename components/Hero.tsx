@@ -31,6 +31,7 @@ export default function Hero() {
   return (
     <motion.section
       ref={ref}
+      data-bg="light"
       style={{ scale: panelScale }}
       className="relative mx-2 mt-2 flex min-h-[calc(100vh-64px)] origin-center items-center overflow-hidden rounded-3xl bg-white sm:mx-3 sm:mt-3"
     >
@@ -73,7 +74,7 @@ export default function Hero() {
             </span> */}
           </motion.h1>
           <motion.div variants={item} className="mt-6">
-            <Button href="/contact">Let's Talk</Button>
+            <Button href="/contact">Let&apos;s Talk</Button>
           </motion.div>
         </motion.div>
 

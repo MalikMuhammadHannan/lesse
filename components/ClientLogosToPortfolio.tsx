@@ -62,7 +62,7 @@ export default function ClientLogosToPortfolio() {
   const project = portfolioProjects[3];
 
   return (
-    <section ref={sectionRef} className="relative h-screen overflow-hidden bg-off-white text-black">
+    <section ref={sectionRef} data-bg="light" className="relative h-screen overflow-hidden bg-off-white text-black">
       <div className="flex h-full flex-col items-center justify-center gap-14 px-6">
         <div
           ref={logosRef}

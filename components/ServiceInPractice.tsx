@@ -14,7 +14,7 @@ export default function ServiceInPractice({ service }: { service: Service }) {
 
   if (works?.length) {
     return (
-      <section className="bg-off-white px-6 py-32 text-black">
+      <section data-bg="light" className="bg-off-white px-6 py-32 text-black">
         <div className="mx-auto max-w-6xl">
           <p className="eyebrow mb-4 text-black/50">{service.name} in Practice</p>
           <div className="mb-14 flex flex-col justify-between gap-4 md:flex-row md:items-end">
@@ -35,7 +35,7 @@ export default function ServiceInPractice({ service }: { service: Service }) {
   const projects = relatedProjects(service);
 
   return (
-    <section className="bg-off-white px-6 py-32 text-black">
+    <section data-bg="light" className="bg-off-white px-6 py-32 text-black">
       <div className="mx-auto max-w-6xl">
         <p className="eyebrow mb-10 text-black/50">{service.name} in Practice</p>
 

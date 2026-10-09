@@ -4,7 +4,7 @@ import Button from "./ui/Button";
 
 export default function ServiceHero({ service }: { service: Service }) {
   return (
-    <section className="relative flex h-[90vh] w-full items-end overflow-hidden bg-black pt-32">
+    <section data-bg="dark" className="relative flex h-[90vh] w-full items-end overflow-hidden bg-black pt-32">
       <Image
         src={service.image}
         alt={service.name}

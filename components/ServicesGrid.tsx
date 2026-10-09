@@ -10,7 +10,7 @@ export default function ServicesGrid() {
   const [hoveredCard, setHoveredCard] = useState<string | null>(null);
 
   return (
-    <section id="services" className="bg-off-white px-6 py-32 text-black">
+    <section id="services" data-bg="light" className="bg-off-white px-6 py-32 text-black">
       <div className="mx-auto max-w-6xl">
         <p className="eyebrow mb-8 text-black/50">Our Services</p>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">

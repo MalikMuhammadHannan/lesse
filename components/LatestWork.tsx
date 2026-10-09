@@ -140,7 +140,7 @@ export default function LatestWork() {
   const next = useCallback(() => setActive((i) => (i === null ? i : (i + 1) % tiles.length)), []);
 
   return (
-    <section id="work" className="bg-black px-6 py-32">
+    <section id="work" data-bg="dark" className="bg-black px-6 py-32">
       <div className="mx-auto max-w-6xl">
         <div className="mb-14 flex flex-col justify-between gap-4 md:flex-row md:items-end">
           <div>

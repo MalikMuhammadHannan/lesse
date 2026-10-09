@@ -3,7 +3,7 @@ import Button from "./ui/Button";
 
 export default function Testimonials() {
   return (
-    <section className="bg-black px-6 py-32">
+    <section data-bg="dark" className="bg-black px-6 py-32">
       <div className="mx-auto grid max-w-6xl grid-cols-1 gap-16 lg:grid-cols-2">
         <div className="lg:sticky lg:top-32 lg:self-start">
           <p className="eyebrow mb-6">Testimonials</p>

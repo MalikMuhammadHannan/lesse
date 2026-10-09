@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import "./globals.css";
+import ScrollBackground from "@/components/ScrollBackground";
 import StartProjectButton from "@/components/ui/StartProjectButton";
 import LOGO from "@/public/images/white-logo.png";
 import { SITE_NAME, SITE_DESCRIPTION, SITE_URL, TITLE } from "@/lib/seo";
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body className="min-h-full flex flex-col bg-white text-white">
         {children}
+        <ScrollBackground />
         <StartProjectButton />
         <script
           type="application/ld+json"

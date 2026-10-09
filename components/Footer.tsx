@@ -9,7 +9,7 @@ const SOCIALS = [
 
 export default function Footer() {
   return (
-    <footer id="site-footer" className="relative overflow-hidden bg-black pt-24">
+    <footer id="site-footer" data-bg="dark" className="relative overflow-hidden bg-black pt-24">
       <div className="relative z-10 mx-auto max-w-6xl px-6">
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           {services.map((service) => (

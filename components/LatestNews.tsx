@@ -109,6 +109,7 @@ export default function LatestNews() {
     <section
       ref={sectionRef}
       id="news"
+      data-bg="dark"
       className="relative bg-black"
       style={isPinned ? { height: `calc(100vh + ${distance}px)` } : undefined}
     >

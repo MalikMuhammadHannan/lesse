@@ -95,3 +95,11 @@ body {
   text-transform: uppercase;
   color: var(--color-muted);
 }
+/* Scroll-driven page background (components/ScrollBackground.tsx). */
+body {
+  transition: background-color 0.7s ease;
+}
+
+html.scroll-bg [data-bg] {
+  background-color: transparent !important;
+}

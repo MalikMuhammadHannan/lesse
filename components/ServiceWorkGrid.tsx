@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
-import { agencySites, type ServiceWork } from "@/lib/data/service-work";
+import type { ServiceWork } from "@/lib/data/service-work";
 
 function Arrow({ className = "" }: { className?: string }) {
   return (
@@ -87,11 +87,22 @@ export function WorkModal({
       if (e.key === "ArrowLeft") onPrev();
       if (e.key === "ArrowRight") onNext();
     };
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    // Lock page scroll and hide its scrollbar; pad by the scrollbar's width so
+    // the page underneath doesn't shift, and restore the exact scroll position.
+    const root = document.documentElement;
+    const body = document.body;
+    const prev = { root: root.style.overflow, body: body.style.overflow, pad: body.style.paddingRight };
+    const scrollY = window.scrollY;
+    const scrollbar = window.innerWidth - root.clientWidth;
+    root.style.overflow = "hidden";
+    body.style.overflow = "hidden";
+    if (scrollbar > 0) body.style.paddingRight = `${scrollbar}px`;
     window.addEventListener("keydown", onKey);
     return () => {
-      document.body.style.overflow = overflow;
+      root.style.overflow = prev.root;
+      body.style.overflow = prev.body;
+      body.style.paddingRight = prev.pad;
+      window.scrollTo({ top: scrollY, behavior: "instant" });
       window.removeEventListener("keydown", onKey);
     };
   }, [onClose, onPrev, onNext]);
@@ -104,7 +115,7 @@ export function WorkModal({
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
-      className="fixed inset-0 z-100 overflow-y-auto bg-black/70 backdrop-blur-sm"
+      className="no-scrollbar fixed inset-0 z-100 overflow-y-auto overscroll-contain bg-black/70 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -130,7 +141,7 @@ export function WorkModal({
           </svg>
         </button>
 
-        <div className="relative aspect-16/9 w-full bg-black/5">
+        <div className="relative aspect-video w-full bg-black/5">
           <Image src={hero} alt={work.client} fill sizes="(min-width: 1024px) 1024px, 100vw" className="object-cover" priority />
         </div>
 
@@ -189,7 +200,7 @@ export function WorkModal({
               <div
                 key={src}
                 className={`relative overflow-hidden rounded-2xl bg-black/5 ${i === 0 || (i === rest.length - 1 && rest.length % 2 === 0)
-                    ? "aspect-16/9 sm:col-span-2"
+                    ? "aspect-video sm:col-span-2"
                     : "aspect-4/3"
                   }`}
               >

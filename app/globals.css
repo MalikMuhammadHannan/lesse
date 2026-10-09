@@ -44,6 +44,42 @@ body {
   overflow-x: hidden;
 }
 
+/* Custom scrollbar — slim, rounded, matches the dark palette. */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-near-black);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border: 3px solid var(--color-near-black);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #6a6a6a;
+}
+
+::-webkit-scrollbar-corner {
+  background: var(--color-near-black);
+}
+
+::-webkit-scrollbar-button {
+  display: none;
+}
+
+/* Firefox (Chromium ignores ::-webkit-scrollbar when these are set, so scope them). */
+@supports (-moz-appearance: none) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: #3a3a3a var(--color-near-black);
+  }
+}
+
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }

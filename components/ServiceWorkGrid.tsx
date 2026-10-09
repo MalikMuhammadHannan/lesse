@@ -70,7 +70,7 @@ function WorkCard({
   );
 }
 
-function WorkModal({
+export function WorkModal({
   work,
   onClose,
   onPrev,

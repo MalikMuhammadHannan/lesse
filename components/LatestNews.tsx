@@ -1,94 +1,163 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { news } from "@/lib/data/news";
+import {
+  motion,
+  useReducedMotion,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion";
+import { news, type NewsArticle } from "@/lib/data/news";
 import Button from "./ui/Button";
 
-function ArrowButton({
-  direction,
-  onClick,
-}: {
-  direction: "prev" | "next";
-  onClick: () => void;
-}) {
+const useIsoLayoutEffect = typeof window === "undefined" ? useEffect : useLayoutEffect;
+
+function NewsCard({ article, index }: { article: NewsArticle; index: number }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      aria-label={direction === "prev" ? "Previous" : "Next"}
-      className="flex h-11 w-11 items-center justify-center rounded-full bg-dark-card text-white transition-colors hover:bg-white hover:text-black"
+    <Link
+      href={`/insights/${article.slug}`}
+      className="group relative flex h-110 w-[82vw] shrink-0 snap-start flex-col overflow-hidden rounded-3xl border border-white/8 bg-dark-card sm:w-110 md:h-105 md:w-180 md:flex-row"
     >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-        <path
-          d={direction === "prev" ? "M15 6l-6 6 6 6" : "M9 6l6 6-6 6"}
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
+      <div className="relative h-1/2 w-full overflow-hidden md:order-2 md:h-full md:w-[55%]">
+        <Image
+          src={article.image}
+          alt={article.title}
+          fill
+          sizes="(min-width: 768px) 400px, 82vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
-      </svg>
-    </button>
+        <div className="absolute inset-0 bg-linear-to-t from-black/40 to-transparent md:bg-linear-to-r" />
+      </div>
+
+      <div className="relative z-10 flex flex-1 flex-col justify-between p-7 md:w-[45%] md:p-9">
+        <div>
+          <span className="text-sm font-medium tabular-nums text-white/30">
+            {String(index + 1).padStart(2, "0")}
+          </span>
+          <h3 className="mt-4 text-2xl font-medium leading-tight text-white md:text-[28px]">
+            {article.title}
+          </h3>
+        </div>
+        <div className="flex items-center justify-between">
+          <p className="text-sm text-muted">{article.date}</p>
+          <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white transition-all duration-300 group-hover:border-white group-hover:bg-white group-hover:text-black">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none">
+              <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+function ViewAllCard() {
+  return (
+    <Link
+      href="/insights"
+      className="group flex h-110 w-[60vw] shrink-0 snap-start flex-col items-center justify-center gap-6 rounded-3xl border border-dashed border-white/15 text-white transition-colors hover:border-white/40 sm:w-[320px] md:h-105"
+    >
+      <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-black transition-transform duration-300 group-hover:scale-110">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      </span>
+      <span className="text-lg font-medium">View all insights</span>
+    </Link>
   );
 }
 
 export default function LatestNews() {
+  const sectionRef = useRef<HTMLElement>(null);
   const trackRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const [distance, setDistance] = useState(0);
+  const [pinned, setPinned] = useState(false);
 
-  const scroll = (dir: "prev" | "next") => {
-    trackRef.current?.scrollBy({
-      left: dir === "next" ? 520 : -520,
-      behavior: "smooth",
-    });
-  };
+  // Pin + scroll horizontally on md+ screens; native swipe elsewhere.
+  useIsoLayoutEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const measure = () => {
+      const enabled = mq.matches && !reduceMotion;
+      setPinned(enabled);
+      const track = trackRef.current;
+      setDistance(track ? Math.max(0, track.scrollWidth - window.innerWidth) : 0);
+    };
+    measure();
+    const ro = new ResizeObserver(measure);
+    if (trackRef.current) ro.observe(trackRef.current);
+    mq.addEventListener("change", measure);
+    window.addEventListener("resize", measure);
+    return () => {
+      ro.disconnect();
+      mq.removeEventListener("change", measure);
+      window.removeEventListener("resize", measure);
+    };
+  }, [reduceMotion]);
+
+  const { scrollYProgress } = useScroll({ target: sectionRef, offset: ["start start", "end end"] });
+  const rawX = useTransform(scrollYProgress, [0, 1], [0, -distance]);
+  const x = useSpring(rawX, { stiffness: 140, damping: 30, mass: 0.4 });
+  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 30 });
+
+  const isPinned = pinned && distance > 0;
 
   return (
-    <section id="news" className="bg-black py-32">
-      <div className="mx-auto max-w-6xl px-6">
-        <div className="mb-12 flex items-center justify-between">
-          <p className="eyebrow">Latest News</p>
-          <div className="flex gap-3">
-            <ArrowButton direction="prev" onClick={() => scroll("prev")} />
-            <ArrowButton direction="next" onClick={() => scroll("next")} />
-          </div>
-        </div>
-      </div>
-
+    <section
+      ref={sectionRef}
+      id="news"
+      className="relative bg-black"
+      style={isPinned ? { height: `calc(100vh + ${distance}px)` } : undefined}
+    >
       <div
-        ref={trackRef}
-        className="no-scrollbar flex snap-x snap-mandatory gap-6 overflow-x-auto px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] pb-4"
+        className={
+          isPinned
+            ? "sticky top-0 flex h-screen flex-col justify-center overflow-hidden"
+            : "py-32"
+        }
       >
-        {news.map((article) => (
-          <Link
-            key={article.slug}
-            href={`/insights/${article.slug}`}
-            className="group relative flex h-[360px] w-[680px] shrink-0 snap-start overflow-hidden rounded-3xl border border-white/8 bg-dark-card"
-          >
-            <div className="relative z-10 flex w-[45%] flex-col justify-between p-8">
-              <div>
-                <h3 className="text-2xl font-medium leading-tight text-white">
-                  {article.title}
-                </h3>
+        <div className="mx-auto mb-12 flex w-full max-w-6xl items-end justify-between gap-6 px-6">
+          <div>
+            <p className="eyebrow mb-4">Latest News</p>
+            <h2 className="text-3xl font-medium tracking-tight text-white md:text-4xl">
+              Ideas, insights & industry thinking
+            </h2>
+          </div>
+          {isPinned && (
+            <div className="hidden w-48 md:block" aria-hidden>
+              <div className="h-px w-full bg-white/15">
+                <motion.div style={{ scaleX: progress }} className="h-px origin-left bg-white" />
               </div>
-              <p className="text-sm text-muted">{article.date}</p>
+              <p className="mt-3 text-right text-xs uppercase tracking-wide text-white/40">Scroll</p>
             </div>
-            <div className="relative w-[55%]">
-              <Image
-                src={article.image}
-                alt={article.title}
-                fill
-                className="object-cover transition-transform duration-700 group-hover:scale-105"
-              />
-            </div>
-          </Link>
-        ))}
-      </div>
+          )}
+        </div>
 
-      <div className="mt-12 flex justify-center">
-        <Button href="/insights" variant="outline">
-          View all news
-        </Button>
+        <motion.div
+          ref={trackRef}
+          style={isPinned ? { x } : undefined}
+          className={`flex gap-6 px-[max(1.5rem,calc((100vw-72rem)/2+1.5rem))] ${
+            isPinned
+              ? "w-max will-change-transform"
+              : "no-scrollbar snap-x snap-mandatory scroll-px-6 overflow-x-auto pb-4"
+          }`}
+        >
+          {news.map((article, i) => (
+            <NewsCard key={article.slug} article={article} index={i} />
+          ))}
+          <ViewAllCard />
+        </motion.div>
+
+        {!isPinned && (
+          <div className="mt-12 flex justify-center px-6">
+            <Button href="/insights" variant="outline">
+              View all news
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

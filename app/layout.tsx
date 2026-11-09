@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import "./globals.css";
+import JsonLd from "@/components/JsonLd";
 import ScrollBackground from "@/components/ScrollBackground";
 import StartProjectButton from "@/components/ui/StartProjectButton";
 import LOGO from "@/public/images/white-logo.png";
@@ -29,52 +30,63 @@ export const metadata: Metadata = {
     "eCommerce development",
   ],
   authors: [{ name: SITE_NAME }],
-  alternates: {
-    canonical: "/",
-  },
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  // No site-wide canonical: it would be inherited by any route that forgets
+  // its own. Pages set theirs via pageMetadata() in lib/seo.ts.
   openGraph: {
     type: "website",
-    url: SITE_URL,
+    locale: "en_US",
+    siteName: SITE_NAME,
     title: TITLE,
     description: SITE_DESCRIPTION,
-    siteName: SITE_NAME,
-    images: [{ url: LOGO.src, width: LOGO.width, height: LOGO.height }],
   },
   twitter: {
     card: "summary_large_image",
     title: TITLE,
     description: SITE_DESCRIPTION,
-    images: [LOGO.src],
   },
-  robots: {
-    index: true,
-    follow: true,
+  // No site-wide robots tag: index/follow is the default, and an explicit one
+  // conflicts with the noindex Next.js adds to 404 pages.
+  verification: {
+    google: "TQP0S66elXqZF59LwmRMj_-TeUuoX62Iu-qzsSxiyaA",
   },
 };
 
-const organizationJsonLd = {
+const siteJsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
-  name: SITE_NAME,
-  url: SITE_URL,
-  logo: `${SITE_URL}${LOGO.src}`,
-  description: SITE_DESCRIPTION,
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      logo: `${SITE_URL}${LOGO.src}`,
+      description: SITE_DESCRIPTION,
+      address: {
+        "@type": "PostalAddress",
+        addressLocality: "Islamabad",
+        addressCountry: "PK",
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${SITE_URL}/#website`,
+      name: SITE_NAME,
+      url: SITE_URL,
+      publisher: { "@id": `${SITE_URL}/#organization` },
+    },
+  ],
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${grotesk.variable} h-full antialiased`}>
-      <head>
-        <meta name="google-site-verification" content="TQP0S66elXqZF59LwmRMj_-TeUuoX62Iu-qzsSxiyaA" />
-      </head>
       <body className="min-h-full flex flex-col bg-white text-white">
         {children}
         <ScrollBackground />
         <StartProjectButton />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
-        />
+        <JsonLd data={siteJsonLd} />
       </body>
     </html>
   );

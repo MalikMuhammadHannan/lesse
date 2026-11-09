@@ -4,6 +4,7 @@ import Image from "next/image";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { portfolioProjects } from "@/lib/data/portfolio";
+import { pageMetadata } from "@/lib/seo";
 
 export function generateStaticParams() {
   return portfolioProjects.map((project) => ({ slug: project.slug }));
@@ -18,28 +19,15 @@ export async function generateMetadata({
   const project = portfolioProjects.find((p) => p.slug === slug);
   if (!project) return {};
 
-  const title = project.title;
-  const description = `${project.title} — a ${project.industry} project delivered by Cortexsys in ${project.location}.`;
-
-  return {
-    title,
-    description,
-    alternates: {
-      canonical: `/portfolio/${project.slug}`,
-    },
-    openGraph: {
-      title,
-      description,
-      url: `/portfolio/${project.slug}`,
-      images: [{ url: project.image }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description,
-      images: [project.image],
-    },
-  };
+  // Placeholder projects (stock images, no case-study copy): kept out of the
+  // index and the sitemap until real content replaces them.
+  return pageMetadata({
+    title: project.title,
+    description: `${project.title} — a ${project.industry} project in ${project.location}.`,
+    path: `/portfolio/${project.slug}`,
+    image: project.image,
+    noIndex: true,
+  });
 }
 
 export default async function PortfolioDetailPage({
@@ -60,7 +48,14 @@ export default async function PortfolioDetailPage({
           <h1 className="mb-10 text-5xl leading-tight">{project.title}</h1>
 
           <div className="relative mb-12 aspect-16/9 w-full overflow-hidden rounded-3xl">
-            <Image src={project.image} alt={project.title} fill className="object-cover" />
+            <Image
+              src={project.image}
+              alt={`${project.title} — ${project.industry} project`}
+              fill
+              priority
+              sizes="(min-width: 1152px) 1104px, 100vw"
+              className="object-cover"
+            />
           </div>
 
           <div className="flex gap-16">

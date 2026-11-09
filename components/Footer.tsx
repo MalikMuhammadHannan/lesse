@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { services } from "@/lib/data/services";
 
 const SOCIALS = [
@@ -14,19 +15,17 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-10 md:grid-cols-4">
           {services.map((service) => (
             <div key={service.slug}>
-              <h4 className="mb-4 flex items-center gap-1 text-sm font-semibold text-white">
+              <Link
+                href={`/services/${service.slug}`}
+                className="mb-4 flex items-center gap-1 text-sm font-semibold text-white hover:underline"
+              >
                 {service.name}
-                <span className="text-muted">↗</span>
-              </h4>
+                <span className="text-muted" aria-hidden>↗</span>
+              </Link>
               <ul className="flex flex-col gap-2">
                 {service.tags.map((tag) => (
-                  <li key={tag}>
-                    <a
-                      href="#"
-                      className="text-sm text-muted transition-colors hover:text-white hover:underline"
-                    >
-                      {tag}
-                    </a>
+                  <li key={tag} className="text-sm text-muted">
+                    {tag}
                   </li>
                 ))}
               </ul>

@@ -7,6 +7,9 @@ import Testimonials from "@/components/Testimonials";
 import LatestNews from "@/components/LatestNews";
 import ContactForm from "@/components/ContactForm";
 import Footer from "@/components/Footer";
+import { pageMetadata, SITE_DESCRIPTION } from "@/lib/seo";
+
+export const metadata = pageMetadata({ description: SITE_DESCRIPTION, path: "/" });
 
 export default function Home() {
   return (

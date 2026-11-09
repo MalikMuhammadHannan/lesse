@@ -16,7 +16,7 @@ export default function AboutScrollImage() {
   const opacity = useTransform(scrollYProgress, [0, 0.15, 0.85, 1], [0.4, 1, 1, 0.6]);
 
   return (
-    <section ref={ref} className="relative h-[220vh] bg-black">
+    <section ref={ref} data-bg="dark" className="relative h-[220vh] bg-black">
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6">
         <motion.div
           style={{ scale, borderRadius: radius, opacity }}
@@ -26,6 +26,7 @@ export default function AboutScrollImage() {
             src="https://picsum.photos/seed/about-studio/1800/1200"
             alt="Inside the Cortexsys studio"
             fill
+            sizes="(min-width: 1152px) 1104px, 100vw"
             className="object-cover"
           />
         </motion.div>

@@ -10,6 +10,8 @@ import ServiceProcess from "@/components/ServiceProcess";
 import ServiceWhatWeDo from "@/components/ServiceWhatWeDo";
 import { services, servicesByCategory } from "@/lib/data/services";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/JsonLd";
+import { absoluteUrl, breadcrumbJsonLd, pageMetadata, SITE_URL } from "@/lib/seo";
 
 export function generateStaticParams() {
   return services.map((service) => ({ slug: service.slug }));
@@ -24,25 +26,12 @@ export async function generateMetadata({
   const service = servicesByCategory[slug];
   if (!service) return {};
 
-  return {
+  return pageMetadata({
     title: service.name,
     description: service.tagline,
-    alternates: {
-      canonical: `/services/${service.slug}`,
-    },
-    openGraph: {
-      title: `${service.name} - Cortexsys`,
-      description: service.tagline,
-      url: `/services/${service.slug}`,
-      images: [{ url: service.image }],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${service.name} - Cortexsys`,
-      description: service.tagline,
-      images: [service.image],
-    },
-  };
+    path: `/services/${service.slug}`,
+    image: service.image,
+  });
 }
 
 export default async function ServiceDetailPage({
@@ -54,8 +43,36 @@ export default async function ServiceDetailPage({
   const service = servicesByCategory[slug];
   if (!service) notFound();
 
+  const path = `/services/${service.slug}`;
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: service.name,
+      serviceType: service.name,
+      description: service.description,
+      url: absoluteUrl(path),
+      image: absoluteUrl(service.image),
+      provider: { "@id": `${SITE_URL}/#organization` },
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: service.name,
+        itemListElement: service.tags.map((tag) => ({
+          "@type": "Offer",
+          itemOffered: { "@type": "Service", name: tag },
+        })),
+      },
+    },
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Services", path: "/services" },
+      { name: service.name, path },
+    ]),
+  ];
+
   return (
     <>
+      <JsonLd data={jsonLd} />
       <Header />
       <main>
         <ServiceHero service={service} />

@@ -19,7 +19,7 @@ function Arrow({ className = "" }: { className?: string }) {
   );
 }
 
-function WorkCard({
+export function WorkCard({
   work,
   featured,
   onOpen,
@@ -61,11 +61,10 @@ function WorkCard({
           <p className="text-sm font-semibold uppercase text-black">{work.industry}</p>
         </div>
       </div>
-      {work.tags?.length ? (
-        <p className="mt-3 text-xs text-black/40">
-          {work.tags.filter((t) => t !== "Migrations").at(-1)}
-        </p>
-      ) : null}
+      <p className="mt-3 text-xs text-black/40">
+        {work.tags?.length ? `${work.tags.filter((t) => t !== "Migrations").at(-1)} · ` : ""}
+        Work by {work.agency}
+      </p>
     </button>
   );
 }

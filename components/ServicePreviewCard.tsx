@@ -45,7 +45,7 @@ export default function ServicePreviewCard({
               transition={{ duration: 0.3 }}
               className="absolute inset-0"
             >
-              <Image src={service.image} alt="" fill className="object-cover " />
+              <Image src={service.image} alt="" fill sizes="320px" className="object-cover" />
               <div className="absolute inset-0 bg-black/50" />
             </motion.div>
           )}
@@ -56,6 +56,7 @@ export default function ServicePreviewCard({
             src={service.image}
             alt=""
             fill
+            sizes="(min-width: 1024px) 288px, (min-width: 640px) 50vw, 100vw"
             className={`object-cover transition-all duration-300 ${isHovered ? "scale-105 blur-[2px] brightness-[0.5]" : ""
               }`}
           />

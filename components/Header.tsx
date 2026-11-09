@@ -29,11 +29,12 @@ export default function Header() {
       <div className="flex w-full max-w-6xl items-center justify-between">
         <Link
           href="/"
+          aria-label="Cortexsys home"
           className="flex h-10 w-10 items-center justify-center rounded-xl  text-lg font-bold bg-dark-card"
         >
           <Image
             src={LOGO}
-            alt="Logo"
+            alt="Cortexsys"
             width={70}
             height={70}
             preload

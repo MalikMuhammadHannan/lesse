@@ -21,6 +21,7 @@ export default function PortfolioCard({ project }: { project: PortfolioProject }
           src={project.image}
           alt={project.title}
           fill
+          sizes="(min-width: 1152px) 552px, (min-width: 768px) 50vw, 100vw"
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
         <AnimatePresence>

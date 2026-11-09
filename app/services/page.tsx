@@ -1,26 +1,18 @@
-import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Button from "@/components/ui/Button";
 import ServiceGroupSection from "@/components/ServiceGroupSection";
 import type { ServiceGroup } from "@/lib/data/services";
+import { pageMetadata } from "@/lib/seo";
 
 const GROUPS: ServiceGroup[] = ["Strategy", "Visual", "Technology"];
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Services",
   description:
     "Cortexsys builds digital products from concept to production, spanning brand strategy, visual identity, UX design, web and mobile development, and eCommerce.",
-  alternates: {
-    canonical: "/services",
-  },
-  openGraph: {
-    title: "Services - Cortexsys",
-    description:
-      "Cortexsys builds digital products from concept to production, spanning brand strategy, visual identity, UX design, web and mobile development, and eCommerce.",
-    url: "/services",
-  },
-};
+  path: "/services",
+});
 
 export default function ServicesPage() {
   return (
@@ -39,7 +31,7 @@ export default function ServicesPage() {
               </span>
             </h1>
             <div className="mt-8">
-              <Button href="/#contact" variant="dark">
+              <Button href="/contact" variant="dark">
                 Discuss The Project
               </Button>
             </div>

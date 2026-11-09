@@ -13,7 +13,13 @@ export default function ServiceGroupBlock({ service }: { service: Service }) {
   return (
     <div className="grid grid-cols-1 gap-8 py-12 md:grid-cols-2 md:items-start">
       <div className="relative aspect-4/3 w-full overflow-hidden rounded-2xl">
-        <Image src={service.image} alt={service.name} fill className="object-cover" />
+        <Image
+          src={service.image}
+          alt={service.name}
+          fill
+          sizes="(min-width: 1152px) 560px, (min-width: 768px) 50vw, 100vw"
+          className="object-cover"
+        />
       </div>
 
       <div>

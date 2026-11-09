@@ -1,24 +1,15 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { news } from "@/lib/data/news";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Insights",
-  description:
-    "Ideas and perspectives from Cortexsys on branding, design, and technology.",
-  alternates: {
-    canonical: "/insights",
-  },
-  openGraph: {
-    title: "Insights - Cortexsys",
-    description:
-      "Ideas and perspectives from Cortexsys on branding, design, and technology.",
-    url: "/insights",
-  },
-};
+  description: "Ideas and perspectives from Cortexsys on branding, design, and technology.",
+  path: "/insights",
+});
 
 export default function InsightsPage() {
   return (
@@ -26,7 +17,7 @@ export default function InsightsPage() {
       <Header />
       <main className="pt-40">
         <section className="mx-auto max-w-6xl px-6 pb-24">
-          <p className="eyebrow mb-10">Latest News</p>
+          <h1 className="eyebrow mb-10">Insights &amp; Latest News</h1>
           <div className="grid grid-cols-1 gap-8 sm:grid-cols-2">
             {news.map((article) => (
               <Link
@@ -39,11 +30,12 @@ export default function InsightsPage() {
                     src={article.image}
                     alt={article.title}
                     fill
+                    sizes="(min-width: 1152px) 552px, (min-width: 640px) 50vw, 100vw"
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="mb-2 text-xl font-medium text-white">{article.title}</h3>
+                  <h2 className="mb-2 text-xl font-medium text-white">{article.title}</h2>
                   <p className="text-sm text-muted">{article.date}</p>
                 </div>
               </Link>

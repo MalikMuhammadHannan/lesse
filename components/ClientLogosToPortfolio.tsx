@@ -1,6 +1,5 @@
 "use client";
 
-import { portfolioProjects } from "@/lib/data/portfolio";
 import { IMAGES } from "@/lib/default-image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -59,8 +58,6 @@ export default function ClientLogosToPortfolio() {
     return () => ctx.revert();
   }, []);
 
-  const project = portfolioProjects[3];
-
   return (
     <section ref={sectionRef} data-bg="light" className="relative h-screen overflow-hidden bg-off-white text-black">
       <div className="flex h-full flex-col items-center justify-center gap-14 px-6">
@@ -77,7 +74,13 @@ export default function ClientLogosToPortfolio() {
           ref={imageRef}
           className="relative h-[340px] w-[600px] max-w-full overflow-hidden rounded-2xl shadow-2xl shadow-black/10"
         >
-          <Image src={IMAGES.services.web_gif} alt={project.title} fill className="object-cover" />
+          <Image
+            src={IMAGES.services.web_gif}
+            alt="Preview of a Cortexsys web project"
+            fill
+            sizes="(min-width: 640px) 600px, 100vw"
+            className="object-cover"
+          />
         </div>
       </div>
     </section>

@@ -1,56 +1,43 @@
-import type { Metadata } from "next";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import CraftingBanner from "@/components/CraftingBanner";
-import PortfolioCard from "@/components/PortfolioCard";
-import { portfolioProjects } from "@/lib/data/portfolio";
+import PortfolioGrid from "@/components/PortfolioGrid";
+import { pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Portfolio",
   description:
-    "A curated collection of Cortexsys projects across brand strategy, visual identity, web design, development, and visual content.",
-  alternates: {
-    canonical: "/portfolio",
-  },
-  openGraph: {
-    title: "Portfolio - Cortexsys",
-    description:
-      "A curated collection of Cortexsys projects across brand strategy, visual identity, web design, development, and visual content.",
-    url: "/portfolio",
-  },
-};
+    "Featured case studies across brand strategy, brand identity, web development, and eCommerce: the standard Cortexsys builds to.",
+  path: "/portfolio",
+});
 
 export default function PortfolioPage() {
   return (
     <>
       <Header />
-      <main className="bg-off-white pt-40 text-black">
-        <section className="px-6 pb-16">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-10 md:grid-cols-2">
-            <div>
-              <h1 className="text-4xl leading-tight md:text-5xl">
-                <span className="text-black">
-                  More then one hundred projects delivered. A selection of the work
-                </span>{" "}
-                <span className="text-black/40">
-                  we are most proud of, across strategy, design, and technology.
-                </span>
-              </h1>
+      <main>
+        <section data-bg="light" className="bg-off-white px-6 pb-32 pt-40 text-black">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-16 grid grid-cols-1 gap-10 md:grid-cols-2">
+              <div>
+                <p className="eyebrow mb-4 text-black/50">Featured Case Studies</p>
+                <h1 className="text-4xl leading-tight md:text-5xl">
+                  <span className="text-black">The standard we build to,</span>{" "}
+                  <span className="text-black/40">
+                    across strategy, design, and technology.
+                  </span>
+                </h1>
+              </div>
+              <p className="text-sm leading-relaxed text-black/50 md:self-end md:text-right">
+                Benchmark work from leading independent studios across brand strategy,
+                identity, web development, and eCommerce. Each one a specific brief, a
+                specific challenge, and a specific outcome. Credits are listed on every
+                project.
+              </p>
             </div>
-            <p className="text-sm leading-relaxed text-black/50 md:text-right">
-              A curated collection of projects across brand strategy, visual identity,
-              web design, development, and visual content. Each project here represents
-              a specific brief, a specific challenge, and a specific outcome.
-            </p>
-          </div>
-        </section>
 
-        <section className="px-6 pb-24">
-          <div className="mx-auto grid max-w-6xl grid-cols-1 gap-x-6 gap-y-14 md:grid-cols-2">
-            {portfolioProjects.map((project) => (
-              <PortfolioCard key={project.slug} project={project} />
-            ))}
+            <PortfolioGrid />
           </div>
         </section>
 

@@ -63,11 +63,10 @@ export default function PortfolioGrid() {
                   setActive(null);
                   e.currentTarget.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
                 }}
-                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-5 py-2.5 text-xs font-semibold uppercase tracking-wide transition-colors ${
-                  selected
-                    ? "border-black bg-black text-white"
-                    : "border-black/15 text-black/70 hover:border-black/40 hover:text-black"
-                }`}
+                className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-5 py-2.5 text-xs font-semibold uppercase tracking-wide transition-colors ${selected
+                  ? "border-black bg-black text-white"
+                  : "border-black/15 text-black/70 hover:border-black/40 hover:text-black"
+                  }`}
               >
                 {label}
                 <span className={selected ? "text-white/50" : "text-black/35"}>{count}</span>

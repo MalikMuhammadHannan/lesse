@@ -61,10 +61,6 @@ export function WorkCard({
           <p className="text-sm font-semibold uppercase text-black">{work.industry}</p>
         </div>
       </div>
-      <p className="mt-3 text-xs text-black/40">
-        {work.tags?.length ? `${work.tags.filter((t) => t !== "Migrations").at(-1)} · ` : ""}
-        Work by {work.agency}
-      </p>
     </button>
   );
 }
@@ -199,8 +195,8 @@ export function WorkModal({
               <div
                 key={src}
                 className={`relative overflow-hidden rounded-2xl bg-black/5 ${i === 0 || (i === rest.length - 1 && rest.length % 2 === 0)
-                    ? "aspect-video sm:col-span-2"
-                    : "aspect-4/3"
+                  ? "aspect-video sm:col-span-2"
+                  : "aspect-4/3"
                   }`}
               >
                 <Image src={src} alt={`${work.client} project image ${i + 2}`} fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
@@ -272,8 +268,8 @@ export default function ServiceWorkGrid({ works }: { works: ServiceWork[] }) {
                     e.currentTarget.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
                   }}
                   className={`inline-flex shrink-0 items-center gap-2 rounded-full border px-5 py-2.5 text-xs font-semibold uppercase tracking-wide transition-colors ${selected
-                      ? "border-black bg-black text-white"
-                      : "border-black/15 text-black/70 hover:border-black/40 hover:text-black"
+                    ? "border-black bg-black text-white"
+                    : "border-black/15 text-black/70 hover:border-black/40 hover:text-black"
                     }`}
                 >
                   {label}

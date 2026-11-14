@@ -74,28 +74,7 @@ const brandStrategy: ServiceWork[] = [
     ],
     images: gallery("brand-strategy", "yfs"),
   },
-  {
-    slug: "caleb-brown",
-    client: "Caleb & Brown",
-    title: "Making crypto personal",
-    industry: "Finance",
-    agency: "Chello",
-    sourceUrl: "https://www.chello.com.au/work/caleb-brown-rebrand",
-    summary:
-      "Repositioning Australia's leading cryptocurrency brokerage around a human-centred service model.",
-    challenge:
-      "After years of national and international growth, the brokerage needed a brand that proved legitimacy and value in a market crowded with volatility, speculation and get-rich-quick noise.",
-    approach:
-      "Customer surveys, roundtables and stakeholder interviews surfaced the real differentiator — people-first guidance in a hard-to-navigate asset class. That insight shaped a new strategic framework and refreshed identity.",
-    features: [
-      "Customer & stakeholder research program",
-      "People-centred strategic framework",
-      "Refreshed identity built on trust and clarity",
-      "Positioning for global expansion",
-    ],
-    deliverables: ["Research", "Strategy", "Branding", "Creative"],
-    images: gallery("brand-strategy", "caleb-brown"),
-  },
+
   {
     slug: "ind-tech",
     client: "IND Technology",
@@ -227,28 +206,7 @@ const brandStrategy: ServiceWork[] = [
     ],
     images: gallery("brand-strategy", "coxswain"),
   },
-  {
-    slug: "qudos-bank",
-    client: "Qudos Bank",
-    title: "A fresh look with a nod to its roots",
-    industry: "Banking",
-    agency: "Chello",
-    sourceUrl: "https://www.chello.com.au/work/qudos-bank-rebrand",
-    summary:
-      "Refreshing a customer-owned bank's identity to serve both loyal members and a younger audience.",
-    challenge:
-      "Formerly Qantas Credit Union, Qudos had attracted younger customers with a loud, zany brand — but what made Qudos 'Qudos' was getting lost, and long-time members felt left behind.",
-    approach:
-      "Refining the bank's story and voice around its customer-owned heritage, then expressing it through a calmer visual identity and a brand campaign to launch it.",
-    features: [
-      "Heritage-led brand story",
-      "Refined tone of voice",
-      "New visual identity",
-      "Launch brand campaign",
-    ],
-    deliverables: ["Research", "Strategy", "Branding", "Creative"],
-    images: gallery("brand-strategy", "qudos-bank"),
-  },
+
   {
     slug: "wdv",
     client: "Women with Disabilities Victoria",
